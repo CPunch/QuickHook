@@ -2,7 +2,6 @@
 #include <iostream>
 #include "Hooks.h"
 #include "QPatch.h"
-#include "Connection.h"
 
 // 0xE9 = JMP - jump to address
 // 0xC3 = RTN - return to return address
