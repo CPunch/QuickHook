@@ -2,7 +2,6 @@
 
 #include "stdafx.h"
 #include "QPatch.h"
-#include "Connection.h"
 
 QPatch::QPatch(void * ad, BYTE* n_bytes, size_t sz)
 {
@@ -36,7 +35,6 @@ bool QPatch::unpatch()
 	// return 
 	if (VirtualProtect(addr, size, oldproc, &oldproc) == 0)
 	{
-		Output("- VP FAILED !!");
 		return false;
 	}
 
