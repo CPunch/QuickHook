@@ -1,6 +1,4 @@
 #pragma
-
-#include "stdafx.h"
 #include "QPatch.h"
 
 QPatch::QPatch(void * ad, BYTE* n_bytes, size_t sz)
