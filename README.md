@@ -6,9 +6,9 @@ small x86 detour library
 int hooked_gettop(int lua_S)
 {
 	hook_gettop.removeHook(); // remove hook
-  int i = lua_gettop_d(lua_S);
-  hook_gettop.installHook();
-  return i;
+	int i = lua_gettop_d(lua_S);
+	hook_gettop.installHook();
+	return i;
 }
 
 C_Hook hook_gettop;
