@@ -2,7 +2,7 @@
 small x86 detour library
 
 # Example
-
+```c++
 int hooked_gettop(int lua_S)
 {
 	hook_gettop.removeHook(); // remove hook
@@ -14,3 +14,4 @@ int hooked_gettop(int lua_S)
 C_Hook hook_gettop;
 hook_gettop.setSubs((void *)lua_gettop_d, (void *)Lua::hooked_gettop);
 hook_gettop.installHook();
+```
