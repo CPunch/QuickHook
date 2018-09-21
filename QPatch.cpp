@@ -16,7 +16,6 @@ bool QPatch::patch()
 {
 	if (VirtualProtect((void*)addr, size, PAGE_EXECUTE_READWRITE, &oldproc) == 0)
 	{
-		Output("- VP FAILED !!");
 		return false;
 	}
 
