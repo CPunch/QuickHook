@@ -1,5 +1,5 @@
 # QuickHook
-small x86 detour library
+small x86 detour library for Windows applications
 
 # Example
 ```c++
