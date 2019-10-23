@@ -1,4 +1,3 @@
-#pragma
 #include "QPatch.h"
 
 QPatch::QPatch(void * ad, BYTE* n_bytes, size_t sz)
@@ -14,6 +13,7 @@ bool QPatch::patch()
 {
 	if (VirtualProtect((void*)addr, size, PAGE_EXECUTE_READWRITE, &oldproc) == 0)
 	{
+		std::cout << "VirtualProtect failed!" << std::endl;
 		return false;
 	}
 
@@ -21,17 +21,30 @@ bool QPatch::patch()
 	memcpy(orig_bytes, addr, size);
 	memcpy(addr, new_bytes, size);
 
+	if (VirtualProtect(addr, size, oldproc, &oldproc) == 0)
+	{
+		std::cout << "VirtualProtect failed!" << std::endl;
+		return false;
+	}
+
 	return true;
 }
 
 bool QPatch::unpatch()
 {
+	if (VirtualProtect((void*)addr, size, PAGE_EXECUTE_READWRITE, &oldproc) == 0)
+	{
+		std::cout << "VirtualProtect failed!" << std::endl;
+		return false;
+	}
+
 	// replace patched bytes with original
 	memcpy(addr, orig_bytes, size);
 
 	// return 
 	if (VirtualProtect(addr, size, oldproc, &oldproc) == 0)
 	{
+		std::cout << "VirtualProtect failed!" << std::endl;
 		return false;
 	}
 
